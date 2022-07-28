@@ -37,7 +37,7 @@ export const App = () => {
         </Typography>
         <div className={styles['chars-table']}>
             {loading ?
-                <Typography className={styles.loader}>loading</Typography> :
+                <Typography className={styles.loader}>loading...</Typography> :
                 data.results?.map(({name, gender, mass}) => <div key={name}>
                 <div className={styles['char-line']}>
                     <Typography variant={'body1'}>{name} ({gender === 'male' ? <MaleOutlinedIcon/> : <FemaleOutlinedIcon/>})</Typography>

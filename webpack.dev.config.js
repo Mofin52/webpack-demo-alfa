@@ -38,7 +38,11 @@ module.exports = {
         publicPath: "",
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        new CleanWebpackPlugin({
+            cleanAfterEveryBuildPatterns: [
+                "**/*",
+            ],
+        }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'src', 'index.html')
         })

@@ -3,17 +3,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: path.join(__dirname, 'src', 'index.tsx'),
     resolve: {
         extensions: ['.ts', '.tsx', '.js']
     },
-    devServer: {
-        port: 9000,
-        devMiddleware: {
-            index: 'index.html',
-            writeToDisk: true,
-        }
+    optimization: {
+        splitChunks: {
+            chunks: "all",
+            minSize: 3000,
+        },
     },
     module: {
         rules: [
@@ -38,7 +37,11 @@ module.exports = {
         publicPath: "",
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        new CleanWebpackPlugin({
+            cleanAfterEveryBuildPatterns: [
+                "**/*",
+            ],
+        }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'src', 'index.html')
         })
