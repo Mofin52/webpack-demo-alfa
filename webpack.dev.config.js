@@ -18,6 +18,14 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"],
+            },
+            {
+                test: /\.jpe?g$/i,
+                type: "asset/resource",
+            },
+            {
                 test: /\.(tsx?)$/,
                 exclude: /node_modules/,
                 use: 'ts-loader',
@@ -26,7 +34,8 @@ module.exports = {
     },
     output: {
         filename: 'bundle.[contenthash].js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: "",
     },
     plugins: [
         new CleanWebpackPlugin(),
